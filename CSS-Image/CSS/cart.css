@@ -1,0 +1,31 @@
+.empty-cart {
+    background-color: #f8f9fa;
+    border: 2px dashed #ced4da;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.empty-cart:hover {
+    background-color: #f1f3f5;
+    border-color: #adb5bd;
+}
+
+.empty-cart i {
+    color: #adb5bd;
+}
+
+#cart-items .cart-item {
+    border-bottom: 1px solid #dee2e6;
+    padding: 10px 0;
+}
+
+#cart-items .cart-item:last-child {
+    border-bottom: none;
+}
+
+button.btn-sm {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 16px;
+}
