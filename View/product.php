@@ -1,3 +1,5 @@
+<?php global$allProducts;
+include __DIR__ . '/../Controller/get_all_products.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,7 +10,7 @@
 </head>
 <body>
 
-<?php include __DIR__ . "../navbar.html"; ?>
+<?php include __DIR__ . "../navbar.php"; ?>
 
 <div class="container my-5">
     <!-- Bouton filtre en haut à gauche -->
@@ -21,19 +23,20 @@
     <!-- Grille centrée de produits -->
     <div class="d-flex justify-content-center">
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4">
-            <?php for ($i = 1; $i <= 10; $i++): ?>
+            <?php foreach ($allProducts as $product): ?>
                 <div class="col">
                     <div class="card produit-card h-100 text-center">
                         <div class="card-img-top bg-light d-flex justify-content-center align-items-center p-3" style="height: 180px;">
-                            <a href="#"><img src="../CSS-Image/Image/no-image.png" class="img-fluid image-produit" alt="Produit <?= $i ?>"></a>
+                            <a href="#"><img src="../CSS-Image/Image/<?= htmlspecialchars($product['image']) ?>" class="img-fluid image-produit" alt="<?= htmlspecialchars($product['name']) ?>"></a>
                         </div>
                         <div class="card-body">
-                            <h6 class="fw-bold">Produit <?= $i ?></h6>
-                            <p class="text-muted mb-0">Prix</p>
+                            <h6 class="fw-bold"><?= htmlspecialchars($product['name']) ?></h6>
+                            <p class="text-muted mb-0"><?= htmlspecialchars($product['price']) ?> CHF</p>
                         </div>
                     </div>
                 </div>
-            <?php endfor; ?>
+            <?php endforeach; ?>
+
         </div>
     </div>
 </div>

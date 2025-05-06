@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<?php include __DIR__ . "../navbar.php"; ?>
+
 <div class="container my-5">
     <h2 class="text-center mb-4">Mon Panier</h2>
 
@@ -27,6 +29,8 @@
         </div>
     </div>
 </div>
+
+<?php include __DIR__ . "../footer.html"; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

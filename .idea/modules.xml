@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/UniqueFit.iml" filepath="$PROJECT_DIR$/.idea/UniqueFit.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/TPI.iml" filepath="$PROJECT_DIR$/.idea/TPI.iml" />
+>>>>>>> 23249b9 (Ajout fonctionnalité connexion et profil user ainsi que modification du pseudo et mot de passe)
     </modules>
   </component>
 </project>

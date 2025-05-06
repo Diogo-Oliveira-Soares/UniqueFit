@@ -8,19 +8,19 @@
 </head>
 
 <body>
-<?php include __DIR__ . "../navbar.html"; ?>
+<?php include __DIR__ . "../navbar.php"; ?>
 
 <div class="form-center-wrapper">
     <main class="form-wrapper">
         <h2 class="text-center mb-4">Connexion</h2>
-        <form>
+        <form method="post" action="../Controller/login_action.php">
             <div class="mb-3">
-                <label for="pseudo" class="form-label">* Pseudo:</label>
-                <input type="text" class="form-control" id="pseudo" required>
+                <label for="mail" class="form-label">* Email:</label>
+                <input type="text" class="form-control" id="mail" name="mail" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">* Mot de passe:</label>
-                <input type="password" class="form-control" id="password" required>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <div class="d-grid">
                 <button type="submit" class="btn btn-outline-primary">Se connecter</button>
