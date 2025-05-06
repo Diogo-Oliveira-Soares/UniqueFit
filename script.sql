@@ -70,7 +70,26 @@ VALUES
 ('Gants de musculation', 'SN012', 14.50, 'Gants antidérapants', 'Accessoires', 'gants.jpg'),
 ('Casquette training', 'SN013', 12.00, 'Casquette anti-UV', 'Accessoires', 'casquette.jpg'),
 ('Collant thermique', 'SN014', 32.00, 'Collant isolant pour hiver', 'Pantalons', 'collant.jpg'),
-('T-shirt compression', 'SN015', 22.50, 'T-shirt moulant de récupération', 'T-shirts', 'compression.jpg');
+('T-shirt compression', 'SN015', 22.50, 'T-shirt moulant de récupération', 'T-shirts', 'compression.jpg'),
+('Veste sport unisexe', 'SN016', 65.40, 'superbe veste de sport unisexe', 'Vestes','veste2.jpg'),
+('Veste hiver homme', 'SN017', 80.00, 'superbe veste hiver pour homme', 'Vestes','veste3.jpg'),
+('Veste hiver femme', 'SN018', 80.00, 'superbe veste hiver pour femme', 'Vestes','veste4.jpg'),
+('écharpe unisexe', 'SN019', 15.00, 'écharpe légère et confortable', 'Accessoires', 'echarpe.jpg'),
+('Sac de sport compact', 'SN020', 27.99, 'Sac léger avec plusieurs compartiments', 'Accessoires', 'sac.jpg'),
+('Legging seamless femme', 'SN021', 31.50, 'Legging sans couture pour un confort optimal', 'Leggings', 'legging_seamless.jpg'),
+('Legging sport homme', 'SN022', 33.00, 'Legging de compression pour homme', 'Leggings', 'legging_homme.jpg'),
+('Legging imprimé femme', 'SN023', 29.90, 'Legging coloré avec motifs géométriques', 'Leggings', 'legging_imprime.jpg'),
+('Pantalon cargo sport', 'SN024', 42.00, 'Pantalon multi-poches pour activités outdoor', 'Pantalons', 'pantalon_cargo.jpg'),
+('Pantalon training léger', 'SN025', 36.50, 'Pantalon respirant pour entraînement intensif', 'Pantalons', 'pantalon_training.jpg'),
+('Short running homme', 'SN026', 17.99, 'Short léger avec doublure intégrée', 'Shorts', 'short_running_homme.jpg'),
+('Short training femme', 'SN027', 16.50, 'Short taille haute pour le fitness', 'Shorts', 'short_training_femme.jpg'),
+('Short cycliste', 'SN028', 19.00, 'Short moulant idéal pour le vélo', 'Shorts', 'short_cycliste.jpg'),
+('Boxer sport homme', 'SN029', 11.99, 'Boxer respirant en tissu technique', 'Sous-vêtements', 'boxer_homme.jpg'),
+('Culotte sans couture', 'SN030', 9.50, 'Culotte invisible idéale pour le sport', 'Sous-vêtements', 'culotte_femme.jpg'),
+('Sweat oversize unisexe', 'SN031', 44.90, 'Sweat ample et confortable pour tous', 'Sweats', 'sweat_oversize.jpg'),
+('Sweat zippé respirant', 'SN032', 47.00, 'Sweat à fermeture zippée pour entraînement', 'Sweats', 'sweat_zippe.jpg');
+
+
 
 INSERT INTO product_variants (idproducts, size, color, stock)
 VALUES
