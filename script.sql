@@ -215,8 +215,7 @@ VALUES
 (15, 'M', 'Bleu', 28),
 (15, 'L', 'Bleu', 22),
 (15, 'M', 'Noir', 40),
-(15, 'L', 'Noir', 35);
-
+(15, 'L', 'Noir', 35),
 -- Veste sport unisexe (Noir, Vert, Bleu)
 (16, 'M', 'Noir', 20),
 (16, 'L', 'Noir', 18),
@@ -224,7 +223,6 @@ VALUES
 (16, 'L', 'Vert', 12),
 (16, 'M', 'Bleu', 14),
 (16, 'L', 'Bleu', 10),
-
 -- Veste hiver homme (Noir, Gris, Bleu)
 (17, 'M', 'Noir', 25),
 (17, 'L', 'Noir', 20),
@@ -232,25 +230,21 @@ VALUES
 (17, 'L', 'Gris', 15),
 (17, 'M', 'Bleu', 12),
 (17, 'L', 'Bleu', 10),
-
--- Veste hiver femme (Noir, Rose, Beige)
+-- Veste hiver femme (Noir, Rose, Gris)
 (18, 'S', 'Noir', 22),
 (18, 'M', 'Noir', 18),
 (18, 'S', 'Rose', 16),
 (18, 'M', 'Rose', 14),
-(18, 'S', 'Beige', 12),
-(18, 'M', 'Beige', 10),
-
+(18, 'S', 'Gris', 12),
+(18, 'M', 'Gris', 10),
 -- Écharpe unisexe (Gris, Noir, Bleu)
 (19, 'Taille Unique', 'Gris', 40),
 (19, 'Taille Unique', 'Noir', 38),
 (19, 'Taille Unique', 'Bleu', 35),
-
 -- Sac de sport compact (Noir, Rouge, Gris)
 (20, 'Taille Unique', 'Noir', 50),
 (20, 'Taille Unique', 'Rouge', 45),
 (20, 'Taille Unique', 'Gris', 40),
-    
 -- Legging seamless femme (Noir, Rose, Violet)
 (21, 'S', 'Noir', 30),
 (21, 'M', 'Noir', 25),
@@ -258,7 +252,6 @@ VALUES
 (21, 'M', 'Rose', 20),
 (21, 'S', 'Violet', 18),
 (21, 'M', 'Violet', 15),
-
 -- Legging sport homme (Noir, Gris, Bleu)
 (22, 'M', 'Noir', 28),
 (22, 'L', 'Noir', 25),
@@ -266,23 +259,18 @@ VALUES
 (22, 'L', 'Gris', 20),
 (22, 'M', 'Bleu', 18),
 (22, 'L', 'Bleu', 16),
-
--- Legging imprimé femme (Rose, Violet, Multicolore)
+-- Legging imprimé femme (Rose, Violet)
 (23, 'S', 'Rose', 24),
 (23, 'M', 'Rose', 20),
 (23, 'S', 'Violet', 18),
 (23, 'M', 'Violet', 16),
-(23, 'S', 'Multicolore', 15),
-(23, 'M', 'Multicolore', 13),
-
--- Pantalon cargo sport (Kaki, Noir, Beige)
+-- Pantalon cargo sport (Kaki, Noir, Gris)
 (24, 'M', 'Kaki', 22),
 (24, 'L', 'Kaki', 20),
 (24, 'M', 'Noir', 18),
 (24, 'L', 'Noir', 15),
-(24, 'M', 'Beige', 14),
-(24, 'L', 'Beige', 12),
-
+(24, 'M', 'Gris', 14),
+(24, 'L', 'Gris', 12),
 -- Pantalon training léger (Gris, Bleu, Noir)
 (25, 'M', 'Gris', 20),
 (25, 'L', 'Gris', 18),
@@ -290,7 +278,6 @@ VALUES
 (25, 'L', 'Bleu', 14),
 (25, 'M', 'Noir', 12),
 (25, 'L', 'Noir', 10),
-
 -- Short running homme (Noir, Bleu, Gris)
 (26, 'M', 'Noir', 30),
 (26, 'L', 'Noir', 28),
@@ -298,7 +285,6 @@ VALUES
 (26, 'L', 'Bleu', 24),
 (26, 'M', 'Gris', 22),
 (26, 'L', 'Gris', 20),
-
 -- Short training femme (Rose, Noir, Violet)
 (27, 'S', 'Rose', 18),
 (27, 'M', 'Rose', 16),
@@ -306,7 +292,6 @@ VALUES
 (27, 'M', 'Noir', 12),
 (27, 'S', 'Violet', 10),
 (27, 'M', 'Violet', 8),
-
 -- Short cycliste (Noir, Bleu, Gris)
 (28, 'M', 'Noir', 25),
 (28, 'L', 'Noir', 22),
@@ -314,7 +299,6 @@ VALUES
 (28, 'L', 'Bleu', 18),
 (28, 'M', 'Gris', 15),
 (28, 'L', 'Gris', 12),
-
 -- Boxer sport homme (Noir, Gris, Bleu)
 (29, 'M', 'Noir', 30),
 (29, 'L', 'Noir', 28),
@@ -322,23 +306,20 @@ VALUES
 (29, 'L', 'Gris', 24),
 (29, 'M', 'Bleu', 22),
 (29, 'L', 'Bleu', 20),
-
--- Culotte sans couture (Beige, Noir, Rose)
-(30, 'S', 'Beige', 20),
-(30, 'M', 'Beige', 18),
+-- Culotte sans couture (Rose, Noir, Gris)
+(30, 'S', 'Rose', 20),
+(30, 'M', 'Rose', 18),
 (30, 'S', 'Noir', 16),
 (30, 'M', 'Noir', 14),
-(30, 'S', 'Rose', 12),
-(30, 'M', 'Rose', 10),
-
--- Sweat oversize unisexe (Noir, Gris, Bordeaux)
+(30, 'S', 'Gris', 12),
+(30, 'M', 'Gris', 10),
+-- Sweat oversize unisexe (Noir, Gris, Rouge)
 (31, 'M', 'Noir', 22),
 (31, 'L', 'Noir', 20),
 (31, 'M', 'Gris', 18),
 (31, 'L', 'Gris', 15),
-(31, 'M', 'Bordeaux', 12),
-(31, 'L', 'Bordeaux', 10),
-
+(31, 'M', 'Rouge', 12),
+(31, 'L', 'Rouge', 10),
 -- Sweat zippé respirant (Bleu, Noir, Rouge)
 (32, 'M', 'Bleu', 18),
 (32, 'L', 'Bleu', 15),
@@ -346,4 +327,5 @@ VALUES
 (32, 'L', 'Noir', 17),
 (32, 'M', 'Rouge', 12),
 (32, 'L', 'Rouge', 10);
+
 
