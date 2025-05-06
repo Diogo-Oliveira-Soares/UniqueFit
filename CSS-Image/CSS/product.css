@@ -1,39 +1,35 @@
-.card {
+.card.produit-card {
+    border: 1px solid #ccc;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
 }
 
-.card:hover {
-    transform: translateY(-4px);
+.card.produit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-.card-img-top {
-    font-size: 1rem;
-    color: #999;
+.image-container {
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.image-produit {
+    max-height: 160px;
+    max-width: 100%;
+    object-fit: contain;
+    background-color: #fff;
 }
 
 .btn-outline-secondary {
     font-weight: 500;
-}
-
-.image-produit {
-    max-height: 170px;
-    object-fit: contain;
-}
-
-.produit-card {
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    background-color: #fff;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    padding: 10px; /* agrandit visuellement */
-}
-
-.produit-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }

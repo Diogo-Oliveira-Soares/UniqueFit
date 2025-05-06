@@ -1,0 +1,35 @@
+.produit-img-placeholder {
+    width: 100%;
+    padding-top: 75%; /* ratio 4:3 */
+    background-color: #f0f0f0;
+    border: 2px dashed #ccc;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.produit-img-placeholder span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #888;
+    font-size: 1.2rem;
+}
+
+.prix {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.guide-link {
+    font-size: 0.9rem;
+    text-decoration: underline;
+    color: #007bff;
+}
+
+.description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #444;
+}
