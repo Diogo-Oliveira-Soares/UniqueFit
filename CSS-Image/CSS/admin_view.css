@@ -1,0 +1,72 @@
+/* Arrière-plan général */
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Boîte principale */
+.admin-box {
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+/* Titre principal */
+.admin-box h4 {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Bouton "nouveau" */
+.admin-box .btn-primary {
+    border-radius: 12px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 500;
+}
+
+/* Produit */
+.product-item {
+    background-color: #fafafa;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-item:hover {
+    transform: scale(1.01);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+}
+
+/* Nom du produit */
+.product-item span {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Boutons modifier et supprimer */
+.product-item .btn {
+    border-radius: 10px;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+}
+
+.product-item .btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.product-item .btn-danger:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
+.product-item .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.product-item .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+}
