@@ -8,7 +8,9 @@ $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($produits as $produit): ?>
     <div class="col">
         <div class="card produit text-center">
+            <a href="product_details.php?id=<?= urlencode($produit['idproducts']) ?>">
             <img src="../CSS-Image/Image/<?= htmlspecialchars($produit['image']) ?: 'no-image.png' ?>" class="card-img-top" alt="<?= htmlspecialchars($produit['name']) ?>">
+            </a>
             <div class="card-body">
                 <h5 class="card-title fw-bold"><?= htmlspecialchars($produit['name']) ?></h5>
                 <p class="card-text"><?= htmlspecialchars($produit['price']) ?> CHF</p>

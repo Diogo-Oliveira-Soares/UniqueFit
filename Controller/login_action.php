@@ -18,17 +18,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['idusers'] = $user['idusers'];
-        $_SESSION['nickname'] = $user['nickname'];
-        $_SESSION['mail'] = $user['mail'];
-        $_SESSION['firstname'] = $user['firstname'];
-        $_SESSION['lastname'] = $user['lastname'];
-        $_SESSION['profile_image'] = $user['profile_image']; // <-- ajout de l'image
+        if ($user['email_verified'] == 1) {
+            // Authentification réussie
+            $_SESSION['idusers'] = $user['idusers'];
+            $_SESSION['nickname'] = $user['nickname'];
+            $_SESSION['mail'] = $user['mail'];
+            $_SESSION['firstname'] = $user['firstname'];
+            $_SESSION['lastname'] = $user['lastname'];
+            $_SESSION['profile_image'] = $user['profile_image'] ?? null;
 
-        header('Location: ../View/home.php');
-        exit;
+            header('Location: ../View/home.php');
+            exit;
+        } else {
+            echo "Veuillez vérifier votre adresse e-mail avant de vous connecter.";
+        }
     } else {
-        echo "Mail ou mot de passe incsorrect.";
+        echo "Mail ou mot de passe incorrect.";
     }
 }
 ?>
