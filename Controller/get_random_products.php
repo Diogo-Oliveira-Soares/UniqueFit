@@ -2,7 +2,7 @@
 global $conn;
 require_once __DIR__ . '/../Model/db_connector.php';
 
-$stmt = $conn->query("SELECT * FROM products ORDER BY RAND() LIMIT 4");
+$stmt = $conn->query("SELECT * FROM products WHERE is_active = 1 ORDER BY RAND() LIMIT 4");
 $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($produits as $produit): ?>
