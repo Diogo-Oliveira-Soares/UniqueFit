@@ -1,31 +1,32 @@
-.empty-cart {
-    background-color: #f8f9fa;
-    border: 2px dashed #ced4da;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-.empty-cart:hover {
-    background-color: #f1f3f5;
-    border-color: #adb5bd;
-}
-
-.empty-cart i {
-    color: #adb5bd;
-}
-
-#cart-items .cart-item {
-    border-bottom: 1px solid #dee2e6;
-    padding: 10px 0;
-}
-
-#cart-items .cart-item:last-child {
-    border-bottom: none;
+input[type="number"] {
+    width: 80px;
+    padding: 12px 10px;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
 }
 
 button.btn-sm {
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    font-size: 16px;
+    min-width: 100px;
+    height: 45px;
+    padding: 0 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    color: #212529;
+    transition: all 0.3s ease;
+}
+
+button.btn-danger.btn-sm {
+    background-color: #dc3545;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+button.btn-danger.btn-sm:hover {
+    background-color: #B22222;
 }
