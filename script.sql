@@ -26,7 +26,7 @@ CREATE TABLE products (
   description VARCHAR(100) NOT NULL,
   category VARCHAR(30) NOT NULL,
   image VARCHAR(100),
-  is_active TINYINT(1) DEFAULT 1;
+  is_active TINYINT(1) DEFAULT 1
 );
 
 CREATE TABLE product_variants (
