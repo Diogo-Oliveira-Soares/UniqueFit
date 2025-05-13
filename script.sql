@@ -14,7 +14,8 @@ CREATE TABLE users (
     adress VARCHAR(50) NOT NULL,
     mail VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    image VARCHAR(100)
+    image VARCHAR(100),
+    email_verified BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE products (
@@ -24,7 +25,8 @@ CREATE TABLE products (
   price FLOAT NOT NULL,
   description VARCHAR(100) NOT NULL,
   category VARCHAR(30) NOT NULL,
-  image VARCHAR(100)
+  image VARCHAR(100),
+  is_active TINYINT(1) DEFAULT 1;
 );
 
 CREATE TABLE product_variants (
@@ -52,6 +54,14 @@ CREATE TABLE `order-details` (
     PRIMARY KEY (products_idproducts, orders_idorders),
     FOREIGN KEY (products_idproducts) REFERENCES products(idproducts),
     FOREIGN KEY (orders_idorders) REFERENCES orders(idorders)
+);
+
+CREATE TABLE email_verifications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    token VARCHAR(64) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 INSERT INTO products (name, serial_number, price, description, category, image)
