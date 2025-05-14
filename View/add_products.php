@@ -28,7 +28,7 @@
 
 <body>
 
-<?php include __DIR__ . "../navbar.php"; ?>
+<?php include __DIR__ . "/navbar.php"; ?>
 
 <!-- Formulaire d'ajout de produit -->
 <main class="container my-5">
@@ -83,7 +83,7 @@
     </div>
 </main>
 
-<?php include __DIR__ . "../footer.html"; ?>
+<?php include __DIR__ . "/footer.html"; ?>
 
 </body>
 </html>

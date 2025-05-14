@@ -9,6 +9,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require '../Controller/vendor/autoload.php';
 
+session_start(); // Démarre la session pour gérer les erreurs
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $nickname = $_POST['nickname'];
@@ -19,18 +21,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm-password'];
 
+    // Vérification des mots de passe
     if ($password != $confirm_password) {
-        echo "Les mots de passe ne correspondent pas.";
+        $_SESSION['error_message'] = 'Les mots de passe ne correspondent pas.';
+        header('Location: ../View/register.php');
+        exit;
     } else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
+        // Vérifier si l'email existe déjà
         $stmt = $conn->prepare("SELECT * FROM users WHERE mail = :mail");
         $stmt->execute(['mail' => $user_email]);
         $user = $stmt->fetch();
 
         if ($user) {
-            echo "Cet email est déjà utilisé.";
+            $_SESSION['error_message'] = 'Cet email est déjà utilisé.';
+            header('Location: ../View/register.php');
+            exit;
         } else {
+            // Insérer les données dans la base de données
             $stmt = $conn->prepare("INSERT INTO users (nickname, firstname, lastname, mail, adress, password, email_verified) 
                                     VALUES (:nickname, :firstname, :lastname, :mail, :adress, :password, 0)");
 
@@ -45,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $userId = $conn->lastInsertId();
 
+            // Créer un token de vérification pour l'email
             $token = bin2hex(random_bytes(32));
 
             $stmt = $conn->prepare("INSERT INTO email_verifications (user_id, token) VALUES (:user_id, :token)");
@@ -84,9 +94,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $mailer->Body = "Bonjour $firstname,\n\nCliquez sur ce lien pour vérifier votre email :\n$verifyUrl\n\nMerci !";
 
                 $mailer->send();
-                echo "Inscription réussie ! Un e-mail de vérification vous a été envoyé.";
+                $_SESSION['success_message'] = "Inscription réussie ! Un e-mail de vérification vous a été envoyé.";
+                header('Location: ../View/register.php');
+                exit;
             } catch (Exception $e) {
-                echo "Erreur lors de l'envoi du mail : {$mailer->ErrorInfo}";
+                $_SESSION['error_message'] = "Erreur lors de l'envoi du mail : {$mailer->ErrorInfo}";
+                header('Location: ../View/register.php');
+                exit;
             }
         }
     }

@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'] ?? '';
 
     if (empty($mail) || empty($password)) {
-        echo "Tous les champs sont requis.";
+        $_SESSION['error_message'] = 'Tous les champs sont requis.';
+        header('Location: ../View/login.php');
         exit;
     }
 
@@ -30,10 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location: ../View/home.php');
             exit;
         } else {
-            echo "Veuillez vérifier votre adresse e-mail avant de vous connecter.";
+            $_SESSION['error_message'] = 'Veuillez vérifier votre adresse e-mail avant de vous connecter.';
+            header('Location: ../View/login.php');
+            exit;
         }
     } else {
-        echo "Mail ou mot de passe incorrect.";
+        $_SESSION['error_message'] = 'Mail ou mot de passe incorrect.';
+        header('Location: ../View/login.php');
+        exit;
     }
 }
-?>

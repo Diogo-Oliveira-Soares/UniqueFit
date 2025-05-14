@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+// Récupérer le message d'erreur ou de succès
+$error_message = $_SESSION['error_message'] ?? '';
+$success_message = $_SESSION['success_message'] ?? '';
+
+// Supprimer les messages après les avoir affichés
+if ($error_message) {
+    unset($_SESSION['error_message']);
+}
+if ($success_message) {
+    unset($_SESSION['success_message']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -60,6 +76,53 @@
 
 <?php include __DIR__ . "../footer.html"; ?>
 
+<!-- Boîte modale d'erreur -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel">Erreur</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php echo $error_message; ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Boîte modale de succès -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Succès</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php echo $success_message; ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
+<script>
+    // Affichage des modales d'erreur et de succès
+    <?php if ($error_message): ?>
+    var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+    errorModal.show();
+    <?php endif; ?>
+
+    <?php if ($success_message): ?>
+    var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+    successModal.show();
+    <?php endif; ?>
+</script>

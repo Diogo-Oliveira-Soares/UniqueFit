@@ -13,7 +13,7 @@ $total = 0;
 </head>
 <body>
 
-<?php include __DIR__ . "../navbar.php"; ?>
+<?php include __DIR__ . "/navbar.php"; ?>
 
 <div class="container my-5">
     <h2 class="text-center mb-4">Mon Panier</h2>
@@ -29,19 +29,52 @@ $total = 0;
         <div id="cart-content" class="card p-4 shadow-sm mt-4">
             <div id="cart-items">
                 <?php foreach ($cart as $item):
-                    $itemTotal = $item['price'] * $item['quantity'];
+                    // Calculer le total pour cet article
+                    $itemTotal = isset($item['price']) ? $item['price'] * $item['quantity'] : 0;
                     $total += $itemTotal;
-                    $imagePath = "../CSS-Image/Image/" . htmlspecialchars($item['image']);
-                    $imageAlt = htmlspecialchars($item['name']);
-                    $defaultImage = "../CSS-Image/Image/default-image.jpg";
+
+                    // Vérification et gestion des valeurs nulles ou manquantes
+                    $imagePath = isset($item['image']) ? "../CSS-Image/Image/" . htmlspecialchars($item['image']) : "../CSS-Image/Image/default-image.jpg";
+                    $imageAlt = isset($item['name']) ? htmlspecialchars($item['name']) : "Produit sans nom";
+                    $itemName = isset($item['name']) ? htmlspecialchars($item['name']) : "Nom non défini";
+                    $itemColor = isset($item['couleur']) ? htmlspecialchars($item['couleur']) : "Couleur non spécifiée";
+                    $itemSize = isset($item['taille']) ? htmlspecialchars($item['taille']) : "Taille non spécifiée";
+                    $itemText = isset($item['personnalisation']) ? nl2br(htmlspecialchars($item['personnalisation'])) : "Aucune personnalisation";
+                    $textColor = isset($item['textColor']) ? htmlspecialchars($item['textColor']) : "#000000"; // couleur par défaut
+                    $textSize = isset($item['textSize']) ? $item['textSize'] : 16; // taille par défaut
+                    $imageShape = isset($item['imageShape']) ? $item['imageShape'] : "100%"; // forme par défaut
+                    $imageSize = isset($item['imageSize']) ? $item['imageSize'] : 50; // taille par défaut
                     ?>
+
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center border-bottom py-3 gap-3">
                         <div class="d-flex gap-3 align-items-start">
-                            <img src="<?= file_exists($imagePath) ? $imagePath : $defaultImage ?>"
-                                 alt="<?= $imageAlt ?>" style="height: 60px; width: 60px; object-fit: contain;">
+                            <img src="<?= $imagePath ?>" alt="<?= $imageAlt ?>" style="height: 60px; width: 60px; object-fit: contain;">
                             <div>
-                                <div class="fw-bold"><?= htmlspecialchars($item['name']) ?></div>
-                                <div class="text-muted small">Couleur : <?= htmlspecialchars($item['couleur']) ?> | Taille : <?= htmlspecialchars($item['taille']) ?></div>
+                                <div class="fw-bold"><?= $itemName ?></div>
+                                <div class="text-muted small">
+                                    <!-- Affichage des informations de personnalisation -->
+                                    <?php if (!empty($itemText)): ?>
+                                        <div class="fst-italic">Personnalisation : <?= $itemText ?></div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($itemColor)): ?>
+                                        <div>Couleur : <?= $itemColor ?></div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($itemSize)): ?>
+                                        <div>Taille : <?= $itemSize ?></div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($textSize)): ?>
+                                        <div>Taille du texte : <?= $textSize ?>px</div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($textColor)): ?>
+                                        <div>Couleur du texte : <span style="color: <?= $textColor ?>"><?= $textColor ?></span></div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($imageShape)): ?>
+                                        <div>Forme de l'image : <?= $imageShape ?></div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($imageSize)): ?>
+                                        <div>Taille de l'image : <?= $imageSize ?>px</div>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
 
@@ -49,7 +82,7 @@ $total = 0;
                             <form method="POST" class="d-flex align-items-center">
                                 <input type="hidden" name="action" value="update">
                                 <input type="hidden" name="id" value="<?= htmlspecialchars($item['id']) ?>">
-                                <input type="number" name="quantity" value="<?= htmlspecialchars($item['quantity']) ?>" min="1"
+                                <input type="number" name="quantity" value="<?= isset($item['quantity']) ? htmlspecialchars($item['quantity']) : 1 ?>" min="1"
                                        class="form-control form-control-sm me-2 text-center" style="width: 70px;">
                                 <button type="submit" class="btn btn-outline-secondary btn-sm">Mettre à jour</button>
                             </form>
@@ -77,7 +110,7 @@ $total = 0;
     <?php endif; ?>
 </div>
 
-<?php include __DIR__ . "../footer.html"; ?>
+<?php include __DIR__ . "/footer.html"; ?>
 
 </body>
 </html>

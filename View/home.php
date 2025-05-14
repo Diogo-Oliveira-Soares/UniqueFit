@@ -9,7 +9,7 @@
 
 <body>
 
-<?php include __DIR__ . "../navbar.php"; ?>
+<?php include __DIR__ . "/navbar.php"; ?>
 
 <section class="container my-5">
     <h4 class="mb-4">Quelques Suggestions :</h4>
@@ -18,9 +18,9 @@
     </div>
 </section>
 
+<?php include __DIR__ . "/footer.html"; ?>
 
-<?php include __DIR__ . "../footer.html"; ?>
-
+<!-- Bootstrap JS avec Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

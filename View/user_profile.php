@@ -16,6 +16,7 @@ session_start();
 
 <main class="container my-5">
     <h2 class="mb-4">Profil utilisateur</h2>
+
     <div class="row">
         <div class="col-md-4 text-center">
             <?php
@@ -41,7 +42,13 @@ session_start();
                     <label for="confirm-password" class="form-label">Confirmer mot de passe</label>
                     <input type="password" class="form-control" id="confirm-password" name="confirm_password">
                 </div>
-                <button type="submit" class="btn btn-primary">Sauvegarder</button>
+
+                <!-- Conteneur flex pour aligner les boutons horizontalement -->
+                <div class="d-flex justify-content-start">
+                    <button type="submit" class="btn btn-primary me-2">Sauvegarder</button>
+                    <!-- Bouton de déconnexion -->
+                    <a href="../Controller/logout.php" class="btn btn-danger">Se déconnecter</a>
+                </div>
             </form>
         </div>
     </div>

@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Vérifier si un message d'erreur est dans la session
+$error_message = $_SESSION['error_message'] ?? '';
+if ($error_message) {
+    unset($_SESSION['error_message']); // Supprimer le message d'erreur après l'avoir affiché
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,7 +26,7 @@
         <form method="post" action="../Controller/login_action.php">
             <div class="mb-3">
                 <label for="mail" class="form-label">* Email:</label>
-                <input type="text" class="form-control" id="mail" name="mail" required>
+                <input type="email" class="form-control" id="mail" name="mail" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">* Mot de passe:</label>
@@ -40,6 +50,33 @@
 
 <?php include __DIR__ . "../footer.html"; ?>
 
+<!-- Boîte modale d'erreur -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel">Erreur</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php echo $error_message; ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Si un message d'erreur existe, afficher la boîte modale
+    <?php if ($error_message): ?>
+    var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+    errorModal.show();
+    <?php endif; ?>
+</script>
+
 </body>
 </html>

@@ -1,22 +1,28 @@
 <?php
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les données envoyées par le formulaire
+    // Récupération et nettoyage des données du formulaire
     $id = $_POST['id'] ?? null;
-    $name = $_POST['name'] ?? '';
+    $name = htmlspecialchars($_POST['name'] ?? '');
     $price = floatval($_POST['price'] ?? 0);
-    $image = $_POST['image'] ?? '';
+    $image = htmlspecialchars($_POST['image'] ?? '');
     $quantity = intval($_POST['quantity'] ?? 1);
-    $couleur = $_POST['couleur'] ?? '';
-    $taille = $_POST['taille'] ?? '';
+    $couleur = htmlspecialchars($_POST['couleur'] ?? '');
+    $taille = htmlspecialchars($_POST['taille'] ?? '');
+
+    // Récupération de la personnalisation (texte et image)
+    $personnalisation = htmlspecialchars($_POST['personnalisation'] ?? '');
+    $image_personnalisation = htmlspecialchars($_POST['image_personnalisation'] ?? '');
 
     // Validation des données
     if (!$id || $quantity < 1 || !$couleur || !$taille) {
-        $_SESSION['error_message'] = "Veuillez sélectionner une couleur, une taille et une quantité valide.";
+        $_SESSION['error_message'] = "Veuillez sélectionner une couleur, une taille et une quantité valides.";
         header("Location: ../View/product_details.php?id=" . urlencode($id));
         exit;
     }
 
-    // Créer l'article à ajouter
+    // Création de l'article à ajouter
     $product = [
         'id' => $id,
         'name' => $name,
@@ -24,37 +30,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'image' => $image,
         'quantity' => $quantity,
         'couleur' => $couleur,
-        'taille' => $taille
+        'taille' => $taille,
+        'personnalisation' => $personnalisation,
+        'image_personnalisation' => $image_personnalisation
     ];
 
-    // Vérifier si le cookie "cart" existe
+    // Récupération ou initialisation du panier depuis le cookie
+    $cart = [];
     if (isset($_COOKIE['cart'])) {
-        $cart = json_decode($_COOKIE['cart'], true);
-    } else {
-        $cart = [];
+        $decoded = json_decode($_COOKIE['cart'], true);
+        if (is_array($decoded)) {
+            $cart = $decoded;
+        }
     }
 
     $found = false;
 
-    // Vérifier si le produit avec la même couleur et taille est déjà dans le panier
+    // Mise à jour de la quantité si le produit existe déjà avec les mêmes attributs
     foreach ($cart as &$item) {
-        if ($item['id'] === $id && $item['couleur'] === $couleur && $item['taille'] === $taille) {
-            // Si le produit existe déjà, on ajoute la quantité
+        if (
+            $item['id'] === $id &&
+            $item['couleur'] === $couleur &&
+            $item['taille'] === $taille &&
+            ($item['personnalisation'] ?? '') === $personnalisation &&
+            ($item['image_personnalisation'] ?? '') === $image_personnalisation
+        ) {
             $item['quantity'] += $quantity;
             $found = true;
             break;
         }
     }
 
-    // Si le produit n'est pas trouvé, on l'ajoute au panier
+    // Ajout du nouveau produit si non trouvé
     if (!$found) {
         $cart[] = $product;
     }
 
-    // Enregistrer le panier dans un cookie (expiration après 30 jours)
-    setcookie('cart', json_encode($cart), time() + 30 * 24 * 60 * 60, '/');  // 30 jours
+    // Enregistrement du panier dans un cookie (30 jours)
+    setcookie('cart', json_encode($cart), time() + (30 * 24 * 60 * 60), '/', '', false, true);
 
-    // Message de confirmation
+    // Message de succès
     $_SESSION['success_message'] = "Le produit a été ajouté à votre panier avec succès.";
 
     // Redirection vers la page du produit

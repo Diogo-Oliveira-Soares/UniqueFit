@@ -1,5 +1,6 @@
 <?php
 global $product, $couleurs, $tailles;
+include '../Controller/is_product_disabled.php';
 
 // Vérifiez que l'ID du produit est passé dans l'URL
 $productId = $_GET['id'] ?? null;
@@ -89,8 +90,10 @@ $tailles = $tailles ?? [];
                     </div>
                     <div class="mt-1"><a href="#" class="text-decoration-underline">Guide des tailles</a></div>
                 </div>
-
-                <button type="submit" class="btn btn-danger">Ajouter au panier</button>
+                <div class="mt-3 d-flex gap-2">
+                    <button type="submit" class="btn btn-danger">Ajouter au panier</button>
+                    <a href="personalise_product.php?id=<?= htmlspecialchars($product['idproducts'] ?? '') ?>" class="btn btn-primary">Personnaliser</a>
+                </div>
             </form>
 
             <script>
